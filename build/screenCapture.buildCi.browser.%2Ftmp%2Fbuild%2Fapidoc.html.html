@@ -1,0 +1,196 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/hapijs/good-console">good-console (v6.4.0)</a>
+</h1>
+<h4>Console broadcasting for Good process monitor</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.good-console">module good-console</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.good-console.good-console">
+            function <span class="apidocSignatureSpan"></span>good-console
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.good-console.toString">
+            function <span class="apidocSignatureSpan">good-console.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.good-console.toString">module good-console.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.good-console.toString.toString">
+            function <span class="apidocSignatureSpan">good-console.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.good-console" id="apidoc.module.good-console">module good-console</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.good-console.good-console" id="apidoc.element.good-console.good-console">
+        function <span class="apidocSignatureSpan"></span>good-console
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class GoodConsole extends Stream.Transform {
+    constructor(config) {
+
+        super({ objectMode: true });
+
+        config = config || {};
+        this._settings = Hoek.applyToDefaults(internals.defaults, config);
+    }
+
+    _transform(data, enc, next) {
+
+        const eventName = data.event;
+        let tags = [];
+
+        if (Array.isArray(data.tags)) {
+            tags = data.tags.concat([]);
+        }
+        else if (data.tags) {
+            tags = [data.tags];
+        }
+
+        tags.unshift(eventName);
+
+        if (eventName === 'error') {
+            return next(null, internals.utility.formatError(data, tags, this._settings));
+        }
+
+        if (eventName === 'ops') {
+            return next(null, internals.utility.formatOps(data, tags, this._settings));
+        }
+
+        if (eventName === 'response') {
+            return next(null, internals.utility.formatResponse(data, tags, this._settings));
+        }
+
+        if (data.data instanceof Error) {
+            const error = data.data;
+
+            return next(null, internals.utility.formatError(Object.assign(data, { error }), tags, this._settings));
+        }
+
+        if (!data.data) {
+            data.data = '(none)';
+        }
+
+        return next(null, internals.utility.formatDefault(data, tags, this._settings));
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.good-console.toString" id="apidoc.element.good-console.toString">
+        function <span class="apidocSignatureSpan">good-console.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.good-console.toString" id="apidoc.module.good-console.toString">module good-console.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.good-console.toString.toString" id="apidoc.element.good-console.toString.toString">
+        function <span class="apidocSignatureSpan">good-console.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
