@@ -1,4 +1,7 @@
-# api documentation for  [good-console (v6.4.0)](https://github.com/hapijs/good-console)  [![npm package](https://img.shields.io/npm/v/npmdoc-good-console.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-good-console) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-good-console.svg)](https://travis-ci.org/npmdoc/node-npmdoc-good-console)
+# npmdoc-good-console
+
+#### basic api documentation for  [good-console (v6.4.0)](https://github.com/hapijs/good-console)  [![npm package](https://img.shields.io/npm/v/npmdoc-good-console.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-good-console) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-good-console.svg)](https://travis-ci.org/npmdoc/node-npmdoc-good-console)
+
 #### Console broadcasting for Good process monitor
 
 [![NPM](https://nodei.co/npm/good-console.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/good-console)
@@ -58,7 +61,8 @@
     "scripts": {
         "test": "lab -t 100 -vLa code"
     },
-    "version": "6.4.0"
+    "version": "6.4.0",
+    "bin": {}
 }
 ```
 
